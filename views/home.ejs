@@ -1,0 +1,145 @@
+<%- include('partials/header', { title: 'Home' }) %>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge animate-in">🌾 Est. 1998 — Sukkur, Pakistan</div>
+    <h1 class="hero-title animate-in delay-1">
+      Pakistan's Finest<br><span class="gold">Rice — Delivered</span><br>Worldwide
+    </h1>
+    <p class="hero-sub animate-in delay-2">From the fertile fields of Punjab & Sindh to global markets — Al-Ahmed Agri brings you premium Basmati and Non-Basmati rice with uncompromising quality and consistency.</p>
+    <div class="hero-buttons animate-in delay-3">
+      <a href="/products" class="btn-primary">Explore Products</a>
+      <a href="#contact-section" class="btn-outline">Get a Quote</a>
+    </div>
+    <div class="hero-stats animate-in delay-4">
+      <div class="stat"><strong>25+</strong><span>Years of Excellence</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>40+</strong><span>Export Countries</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>50K</strong><span>MT Annual Capacity</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-indicator"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-bar">
+  <div class="marquee-inner">
+    <span>🌾 Super Kernel Basmati</span>
+    <span>✦</span>
+    <span>🌾 1121 Basmati Rice</span>
+    <span>✦</span>
+    <span>🌾 PK-386 Basmati</span>
+    <span>✦</span>
+    <span>🌾 IRRI-6 Non-Basmati</span>
+    <span>✦</span>
+    <span>🌾 IRRI-9 Non-Basmati</span>
+    <span>✦</span>
+    <span>🌾 Export Quality Rice</span>
+    <span>✦</span>
+    <span>🌾 Super Kernel Basmati</span>
+    <span>✦</span>
+    <span>🌾 1121 Basmati Rice</span>
+    <span>✦</span>
+    <span>🌾 PK-386 Basmati</span>
+    <span>✦</span>
+    <span>🌾 IRRI-6 Non-Basmati</span>
+    <span>✦</span>
+    <span>🌾 IRRI-9 Non-Basmati</span>
+    <span>✦</span>
+    <span>🌾 Export Quality Rice</span>
+    <span>✦</span>
+  </div>
+</div>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Products</div>
+      <h2>Featured <span class="gold">Varieties</span></h2>
+      <p>Explore our selection of handpicked, premium-grade rice varieties trusted by traders and households worldwide.</p>
+    </div>
+    <div class="products-grid">
+      <% products.forEach(function(p) { %>
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <div class="product-img" style="background-image: url('<%= p.image %>');"></div>
+          <% if(p.badge) { %><div class="product-badge"><%= p.badge %></div><% } %>
+          <div class="product-cat-tag"><%= p.category === 'basmati' ? 'Basmati' : 'Non-Basmati' %></div>
+        </div>
+        <div class="product-body">
+          <h3><%= p.name %></h3>
+          <p><%= p.description.substring(0, 100) %>...</p>
+          <a href="/products" class="btn-text">View Details →</a>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="/products" class="btn-primary">View All Products</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US (brief) -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Why Al-Ahmed</div>
+      <h2>Built on <span class="gold">Trust & Quality</span></h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>Premium Grading</h3>
+        <p>Every batch is sorted, graded, and certified to meet international export standards before leaving our facility.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔬</div>
+        <h3>Quality Lab Testing</h3>
+        <p>In-house ISO-standard quality control laboratory ensures consistent moisture, purity, and grain specifications.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚢</div>
+        <h3>Global Export Ready</h3>
+        <p>Experienced in shipping to 40+ countries. We handle all export documentation and compliance requirements.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>Farm to Warehouse</h3>
+        <p>Directly contracted with farmers across Punjab and Sindh, ensuring traceability and supply chain integrity.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY PREVIEW -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Facility</div>
+      <h2>State-of-the-Art <span class="gold">Infrastructure</span></h2>
+    </div>
+    <div class="gallery-grid-home">
+      <% gallery.forEach(function(g, i) { %>
+      <div class="gal-item <%= i===0 ? 'gal-big' : '' %>">
+        <div class="gal-img" style="background-image:url('<%= g.image %>');"></div>
+        <div class="gal-overlay">
+          <span><%= g.title %></span>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;">
+      <a href="/gallery" class="btn-primary">View Full Gallery</a>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

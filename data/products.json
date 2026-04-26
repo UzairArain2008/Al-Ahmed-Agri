@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Super Kernel Basmati Rice",
+    "category": "basmati",
+    "description": "The finest long-grain aromatic basmati rice, aged to perfection. Known for its exceptional fragrance, fluffy texture, and distinct elongation upon cooking. Ideal for biryanis, pulao, and pilaf dishes.",
+    "specs": [
+      "Grain Length: 7.2mm+",
+      "Moisture: ≤12.5%",
+      "Broken: ≤1%",
+      "Purity: 99%+"
+    ],
+    "badge": "Premium",
+    "image": "/images/products/basmati-super.jpg",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "name": "1121 Basmati Rice (Raw)",
+    "category": "basmati",
+    "description": "World-famous 1121 variety with extraordinary grain length. This extra-long grain rice is a market leader, prized for its aroma and extreme elongation. Available in raw and sella forms.",
+    "specs": [
+      "Grain Length: 8.3mm+",
+      "Moisture: ≤12%",
+      "Broken: ≤0.5%",
+      "Variety: 1121"
+    ],
+    "badge": "Export Quality",
+    "image": "/images/products/basmati-1121.jpg",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "name": "PK-386 Basmati Rice",
+    "category": "basmati",
+    "description": "Traditional Pakistani basmati variety with excellent cooking quality. Delivers authentic aroma and taste cherished across South Asia and the Middle East. Perfect for everyday use and special occasions.",
+    "specs": [
+      "Grain Length: 6.8mm+",
+      "Moisture: ≤13%",
+      "Broken: ≤2%",
+      "Origin: Punjab, Pakistan"
+    ],
+    "badge": "Traditional",
+    "image": "/images/products/basmati-pk386.jpg",
+    "featured": false
+  },
+  {
+    "id": 4,
+    "name": "IRRI-6 Non-Basmati Rice",
+    "category": "non-basmati",
+    "description": "High-yielding medium-grain IRRI-6 variety. A versatile and economical choice for bulk buyers, food industries, and international markets. Consistent quality with reliable supply throughout the year.",
+    "specs": [
+      "Grain Length: 5.5mm",
+      "Moisture: ≤14%",
+      "Broken: ≤5%",
+      "Variety: IRRI-6"
+    ],
+    "badge": "High Yield",
+    "image": "/images/products/nonbasmati-irri6.jpg",
+    "featured": true
+  },
+  {
+    "id": 5,
+    "name": "IRRI-9 Non-Basmati Rice",
+    "category": "non-basmati",
+    "description": "Medium-grain IRRI-9 variety known for its bright white appearance and soft texture after cooking. Widely used in restaurants, catering services, and household consumption across Asia and Africa.",
+    "specs": [
+      "Grain Length: 5.8mm",
+      "Moisture: ≤14%",
+      "Broken: ≤3%",
+      "Color: Bright White"
+    ],
+    "badge": "Popular",
+    "image": "/images/products/nonbasmati-irri9.jpg",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "name": "Broken Rice (D-Grade)",
+    "category": "non-basmati",
+    "description": "Economical broken rice suitable for rice flour production, animal feed, brewing industries, and budget-conscious markets. Available in 25%, 50%, and 100% broken grades. Consistent supply guaranteed.",
+    "specs": [
+      "Broken: 25-100%",
+      "Moisture: ≤14%",
+      "Usage: Industry/Feed",
+      "Packing: Flexible"
+    ],
+    "badge": "Economical",
+    "image": "/images/products/broken-rice.jpg",
+    "featured": false
+  }
+]

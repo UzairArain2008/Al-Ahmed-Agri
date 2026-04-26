@@ -1,0 +1,97 @@
+<%- include('partials/header', { title: 'Infrastructure & Gallery' }) %>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background: linear-gradient(135deg, #0d1f3c 0%, #1a3a5c 100%);">
+  <div class="page-hero-content">
+    <div class="section-label" style="color:#d4af37; margin-bottom:1rem;">Infrastructure</div>
+    <h1>Our <span class="gold">Facilities & Operations</span></h1>
+    <p>A modern, high-capacity rice processing facility — built for scale, precision, and quality.</p>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-bar-inner">
+    <div class="sb-stat"><strong>50,000 MT</strong><span>Annual Processing Capacity</span></div>
+    <div class="sb-divider"></div>
+    <div class="sb-stat"><strong>5 MT/hr</strong><span>Packaging Speed</span></div>
+    <div class="sb-divider"></div>
+    <div class="sb-stat"><strong>ISO</strong><span>Quality Standards</span></div>
+    <div class="sb-divider"></div>
+    <div class="sb-stat"><strong>25+ Acres</strong><span>Facility Area</span></div>
+  </div>
+</div>
+
+<!-- GALLERY SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Photo Gallery</div>
+      <h2>Inside <span class="gold">Al-Ahmed Agri</span></h2>
+    </div>
+
+    <% if (gallery.length === 0) { %>
+    <div class="empty-state">
+      <div style="font-size:4rem;">📷</div>
+      <h3>Gallery coming soon</h3>
+      <p>We are updating our gallery. Please check back later.</p>
+    </div>
+    <% } else { %>
+    <div class="masonry-gallery">
+      <% gallery.forEach(function(g, i) { %>
+      <div class="masonry-item <%= i % 5 === 0 ? 'masonry-wide' : '' %>">
+        <div class="masonry-img" style="background-image:url('<%= g.image %>');"></div>
+        <div class="masonry-caption">
+          <strong><%= g.title %></strong>
+          <span><%= g.caption %></span>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+    <% } %>
+  </div>
+</section>
+
+<!-- FACILITY OVERVIEW -->
+<section class="section section-alt">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Capabilities</div>
+      <h2>World-Class <span class="gold">Technology</span></h2>
+    </div>
+    <div class="capability-grid">
+      <div class="cap-item">
+        <div class="cap-icon">⚙️</div>
+        <h4>Automated Milling</h4>
+        <p>Japanese and German milling machines for precision husk removal, whitening, and polishing with minimal breakage.</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🎯</div>
+        <h4>Optical Sorting</h4>
+        <p>High-speed optical sorters that remove discolored, damaged, or undersized grains for a consistently uniform product.</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🌡️</div>
+        <h4>Climate Storage</h4>
+        <p>Temperature and humidity controlled silos ensuring long shelf life and preservation of grain quality during storage.</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">📦</div>
+        <h4>Packaging Lines</h4>
+        <p>Five fully automated packaging lines capable of producing 1kg, 5kg, 10kg, 25kg, and 50kg packs at 5 MT/hour.</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🔬</div>
+        <h4>Quality Lab</h4>
+        <p>In-house laboratory with moisture meters, grain length analyzers, and purity testing equipment used on every batch.</p>
+      </div>
+      <div class="cap-item">
+        <div class="cap-icon">🚛</div>
+        <h4>Logistics Hub</h4>
+        <p>Direct access to major road and rail networks, with containerized loading facilities for seamless export shipments.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>
