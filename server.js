@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 const bcrypt = require('bcryptjs');
+const compression = require('compression');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -101,8 +102,16 @@ initFile(INQ_FILE, []);
 initFile(CONF_FILE, defaultConfig);
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
-const readJSON = (f) => JSON.parse(fs.readFileSync(f, 'utf-8'));
-const writeJSON = (f, d) => fs.writeFileSync(f, JSON.stringify(d, null, 2));
+let dataCache = {};
+const loadJSON = (f) => JSON.parse(fs.readFileSync(f, 'utf-8'));
+const readJSON = (f) => {
+    if (!dataCache[f]) dataCache[f] = loadJSON(f);
+    return dataCache[f];
+};
+const writeJSON = (f, d) => {
+    fs.writeFileSync(f, JSON.stringify(d, null, 2));
+    dataCache[f] = d;
+};
 
 // ── Upload config ─────────────────────────────────────────────────────────────
 const storage = multer.diskStorage({
@@ -119,9 +128,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } });
 
 // ── Middleware ────────────────────────────────────────────────────────────────
+app.use(compression());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-app.use(express.static(path.join(__dirname, 'public')));
+app.set('view cache', true);
+app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d' }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
