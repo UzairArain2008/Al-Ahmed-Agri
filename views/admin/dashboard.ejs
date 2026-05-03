@@ -181,10 +181,17 @@
             </div>
             <div class="form-group">
               <label>Category *</label>
-              <select name="category" required>
-                <option value="basmati">Basmati Rice</option>
-                <option value="non-basmati">Non-Basmati Rice</option>
+              <select name="category" required onchange="document.getElementById('new_cat_input').style.display = this.value === 'new' ? 'block' : 'none'; if(this.value === 'new') document.getElementById('new_cat_input').focus();">
+                <% 
+                  const existingCats = Array.from(new Set(products.map(p => p.category)));
+                  if (existingCats.length === 0) { existingCats.push('basmati', 'non-basmati'); }
+                  existingCats.forEach(cat => {
+                %>
+                <option value="<%= cat %>"><%= cat %></option>
+                <% }); %>
+                <option value="new">➕ Add New Category...</option>
               </select>
+              <input type="text" name="category_new" id="new_cat_input" placeholder="Enter new category name" style="display:none; margin-top:0.5rem;">
             </div>
             <div class="form-group full">
               <label>Description *</label>
@@ -289,13 +296,17 @@
             </div>
             <div class="form-group">
               <label>Category</label>
-              <select name="category">
-                <option value="facility">Facility</option>
-                <option value="storage">Storage</option>
-                <option value="farming">Farming</option>
-                <option value="logistics">Logistics</option>
-                <option value="quality">Quality</option>
+              <select name="category" onchange="document.getElementById('new_gal_cat_input').style.display = this.value === 'new' ? 'block' : 'none'; if(this.value === 'new') document.getElementById('new_gal_cat_input').focus();">
+                <% 
+                  const existingGalCats = Array.from(new Set(gallery.map(g => g.category)));
+                  if (existingGalCats.length === 0) { existingGalCats.push('facility', 'storage', 'farming', 'logistics', 'quality'); }
+                  existingGalCats.forEach(cat => {
+                %>
+                <option value="<%= cat %>"><%= cat %></option>
+                <% }); %>
+                <option value="new">➕ Add New Category...</option>
               </select>
+              <input type="text" name="category_new" id="new_gal_cat_input" placeholder="Enter new category name" style="display:none; margin-top:0.5rem;">
             </div>
             <div class="form-group">
               <label>Image *</label>

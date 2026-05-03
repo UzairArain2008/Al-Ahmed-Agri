@@ -155,7 +155,8 @@ app.get('/products', (req, res) => {
     const products = readJSON(PROD_FILE);
     const cat = req.query.cat || 'all';
     const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
-    res.render('products', { products: filtered, activeCategory: cat, page: 'products' });
+    const uniqueCategories = Array.from(new Set(products.map(p => p.category)));
+    res.render('products', { products: filtered, activeCategory: cat, uniqueCategories, page: 'products' });
 });
 
 app.get('/gallery', (req, res) => {
@@ -218,7 +219,8 @@ app.get('/:slug/dashboard', (req, res, next) => {
 app.post('/:slug/products/add', requireAdmin, upload.single('image'), (req, res) => {
     const conf = readJSON(CONF_FILE);
     const products = readJSON(PROD_FILE);
-    const { name, category, description, badge, featured, spec1, spec2, spec3, spec4 } = req.body;
+    const { name, description, badge, featured, spec1, spec2, spec3, spec4 } = req.body;
+    const category = req.body.category === 'new' ? (req.body.category_new || '').trim() : (req.body.category || '').trim();
     const specs = [spec1, spec2, spec3, spec4].filter(Boolean);
     const imgPath = req.file ? `/images/products/${req.file.filename}` : '/images/products/default.jpg';
     products.push({
@@ -252,7 +254,8 @@ app.post('/:slug/products/toggle-featured/:id', requireAdmin, (req, res) => {
 app.post('/:slug/gallery/add', requireAdmin, upload.single('image'), (req, res) => {
     const conf = readJSON(CONF_FILE);
     const gallery = readJSON(GAL_FILE);
-    const { title, caption, category } = req.body;
+    const { title, caption } = req.body;
+    const category = req.body.category === 'new' ? (req.body.category_new || '').trim() : (req.body.category || '').trim();
     const imgPath = req.file ? `/images/gallery/${req.file.filename}` : '/images/gallery/default.jpg';
     gallery.push({ id: Date.now(), title, caption, category, image: imgPath });
     writeJSON(GAL_FILE, gallery);

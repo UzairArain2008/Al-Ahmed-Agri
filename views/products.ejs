@@ -14,8 +14,12 @@
   <div class="container">
     <div class="cat-filters">
       <a href="/products?cat=all" class="cat-btn <%= activeCategory==='all' ? 'active' : '' %>">All Products</a>
-      <a href="/products?cat=basmati" class="cat-btn <%= activeCategory==='basmati' ? 'active' : '' %>">🌾 Basmati Rice</a>
-      <a href="/products?cat=non-basmati" class="cat-btn <%= activeCategory==='non-basmati' ? 'active' : '' %>">🌾 Non-Basmati Rice</a>
+      <% uniqueCategories.forEach(function(cat) { 
+        if (!cat) return;
+        const catName = typeof cat === 'string' ? cat.replace(/-/g, ' ') : String(cat);
+      %>
+      <a href="/products?cat=<%= encodeURIComponent(cat) %>" class="cat-btn <%= activeCategory===cat ? 'active' : '' %>" style="text-transform: capitalize;">🌾 <%= catName %></a>
+      <% }); %>
     </div>
   </div>
 </div>
@@ -31,14 +35,16 @@
     </div>
     <% } else { %>
     <div class="products-full-grid">
-      <% products.forEach(function(p) { %>
+      <% products.forEach(function(p) { 
+        const catDisp = (p.category && typeof p.category === 'string') ? p.category.replace(/-/g, ' ') : (p.category || 'Uncategorized');
+      %>
       <div class="product-full-card">
         <div class="pfc-img-col">
           <div class="pfc-img" style="background-image:url('<%= p.image %>');"></div>
           <% if(p.badge) { %><div class="product-badge"><%= p.badge %></div><% } %>
         </div>
         <div class="pfc-body">
-          <div class="pfc-cat-tag"><%= p.category === 'basmati' ? '🌾 Basmati' : '🌾 Non-Basmati' %></div>
+          <div class="pfc-cat-tag" style="text-transform: capitalize;">🌾 <%= catDisp %></div>
           <h2><%= p.name %></h2>
           <p class="pfc-desc"><%= p.description %></p>
           <% if(p.specs && p.specs.length > 0) { %>
