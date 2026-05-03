@@ -295,7 +295,7 @@ app.use((req, res) => {
 
 app.listen(PORT, () => {
     const conf = readJSON(CONF_FILE);
-    console.log(`\n🌾 Al-Ahmed Agri running on http://localhost:${PORT}`);
+    console.log(`\n🌾 Al Ahmed Rice Agro Exports running on http://localhost:${PORT}`);
     console.log(`🔐 Admin panel: http://localhost:${PORT}/${conf.adminUrlSlug}`);
     console.log(`   Username: admin | Password: AlAhmed@2024\n`);
 });
